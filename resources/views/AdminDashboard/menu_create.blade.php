@@ -186,6 +186,7 @@
                                                 <th>Category</th>
                                                 <th>Description</th>
                                                 <th>Price</th>
+                                                <th>QTY</th>
                                                 <th>Image</th>
                                                 <th>Action</th>
                                             </tr>
@@ -198,6 +199,7 @@
                                                     <td>{{ $menu->category->category_name }}</td>
                                                     <td>{{ $menu->description }}</td>
                                                     <td>LKR {{ $menu->price }}</td>
+                                                    <td>{{ $menu->qty }}</td>
                                                     <td style="text-align: center;"><img
                                                             src="{{ asset('uploads/menu/' . $menu->image) }}"
                                                             width= '60' height='60' class="img img-responsive" />

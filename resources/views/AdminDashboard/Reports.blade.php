@@ -69,15 +69,16 @@
                                 <td>{{ $sl->item_name }}</td>
                                 <td>{{ $sl->user_name }}</td>
                                 <td>{{ $sl->qty }}</td>
-                                <td>{{ $sl->price }}</td>
+                                <td>{{ $sl->price * $sl->qty }}</td>
                                 <td>
-                                    @if ($sl->status == 1)
-                                    <span class="badge badge-warning">Pending</span>
-                                    @elseif ($sl->status == 2)
-                                    <span class="badge badge-success">Deliverd</span>
-                                    @else
-                                        <span class="badge badge-danger">Canceld</span>
-                                    @endif
+                                    <form action="{{ route('updateStatus', $sl->id) }}" method="POST">
+                                        @csrf
+                                        <select name="status" class="form-control form-select" onchange="this.form.submit(); changeColor(this)">
+                                            <option value="1" {{ $sl->status == 1 ? 'selected' : '' }} data-color="yellow">Pending</option>
+                                            <option value="2" {{ $sl->status == 2 ? 'selected' : '' }} data-color="green">Delivered</option>
+                                            <option value="3" {{ $sl->status == 3 ? 'selected' : '' }} data-color="red">Canceled</option>
+                                        </select>
+                                    </form>
                                 </td>
 
                             </tr>
@@ -96,4 +97,27 @@
 
         </div>
     </div>
+
+    <script>
+        // Function to change background color of selected option
+        function changeColor(select) {
+            // Get all options inside the select element
+            var options = select.options;
+    
+            // Loop through all options and remove any previous background color
+            for (var i = 0; i < options.length; i++) {
+                options[i].style.backgroundColor = '';  // Reset background color
+            }
+    
+            // Get the selected option's color and set it as the background color
+            var color = select.options[select.selectedIndex].getAttribute('data-color');
+            select.options[select.selectedIndex].style.backgroundColor = color;  // Set the color of the selected option
+        }
+    
+        // Apply color for the initially selected option when the page loads
+        window.onload = function() {
+            var selectElement = document.querySelector('select[name="status"]');
+            changeColor(selectElement);  // Call the function when the page loads
+        }
+    </script>
 @endsection

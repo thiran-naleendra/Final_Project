@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     protected $table = 'menu';
-    public $fillable = [ 'id', 'name', 'code', 'category_id', 'price', 'description','image'];
+    public $fillable = [ 'id', 'name', 'code', 'category_id', 'price', 'description','qty','image'];
 
 
     public function category()

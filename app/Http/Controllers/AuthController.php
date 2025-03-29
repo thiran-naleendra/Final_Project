@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+
+
+use App\Models\Sales;
+   
+
 // ...
 
 
@@ -67,8 +72,9 @@ class AuthController extends Controller
 
     public function userProfile()
     {   
-        $user = Auth::user();
-        return view('userProfile')->with('user', $user);
+        $user = Auth::user(); // Get the currently authenticated user
+    $sales = Sales::where('user_id', $user->id)->get(); // Fetch the sales for the user
+    return view('userProfile')->with('user', $user)->with('sales', $sales); // Pass the sales data to the view
     }
 
     public function userReg()

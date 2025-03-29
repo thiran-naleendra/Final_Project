@@ -129,3 +129,13 @@ Route::delete('/userDelete', [App\Http\Controllers\RegisterUserController::class
 Route::get('/reports', [App\Http\Controllers\ReportsController::class, 'index'])->name('reports');// reports
 
 Route::post('/storeSales', [App\Http\Controllers\OrderController::class, 'storeSales'])->name('storeSales'); //store sales
+
+
+
+
+Route::post('/sales/update-status/{id}', [ReportsController::class, 'updateStatus'])->name('updateStatus');
+
+// Route to handle adding item to the cart
+Route::post('/add_to_cart/{id}', [OrderController::class, 'addToCart'])->name('add_to_cart');
+
+

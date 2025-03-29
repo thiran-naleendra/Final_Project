@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@extends('AdminDashboard.app')
 @section('content')
 
     <div class="container-fluid">
@@ -108,6 +108,13 @@
                                         <label>Description</label>
                                         <input type="tel" name="description" id="description" placeholder="Description"
                                             value="{{ $menu->description }}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label>QTY</label>
+                                        <input type="tel" name="qty" id="qty" placeholder="qty"
+                                            value="{{ $menu->qty }}">
                                     </div>
                                 </div>
 

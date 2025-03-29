@@ -95,35 +95,40 @@
                 <div class="col-lg-9">
 
                     @foreach ($menu as $menu)
-                        <div class="row row_item" data-cue="slideInUp">
-                            <div class="col-sm-4">
-                                <figure>
-                                    
-                                    <a href="shop-single.html">
-                                        <img class="img-fluid lazy" src="{{ asset('uploads/menu/' .$menu->image) }}"
-                                            data-src="{{ asset('uploads/menu/' .$menu->image) }}" alt="">
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="col-sm-8">
-                                <div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i
-                                        class="icon_star voted"></i><i class="icon_star voted"></i><i
-                                        class="icon_star"></i></div>
-                                <a href="shop-single.html">
-                                    <h3>{{ $menu->name }}</h3>
-                                </a>
-                                <p>{{ $menu->description }}</p>
-                                <div class="price_box">
-                                    <span class="new_price">Rs.{{ $menu->price }}</span>
-                                    <span class="old_price">Rs.{{ $menu->old_price }}</span>
-                                </div>
-                                <ul>
-                                    <li><a href="{{route('add_to_cart', $menu->id) }}" class="btn_1">Add to cart</a></li>
-                                    
-                                </ul>
-                            </div>
-                        </div>
-                    @endforeach
+    <div class="row row_item" data-cue="slideInUp">
+        <div class="col-sm-4">
+            <figure>
+                <a href="shop-single.html">
+                    <img class="img-fluid lazy" src="{{ asset('uploads/menu/' .$menu->image) }}"
+                         data-src="{{ asset('uploads/menu/' .$menu->image) }}" alt="">
+                </a>
+            </figure>
+        </div>
+        <div class="col-sm-8">
+            <div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i
+                    class="icon_star voted"></i><i class="icon_star"></i></div>
+            <a href="shop-single.html">
+                <h3>{{ $menu->name }}</h3>
+            </a>
+            <p>{{ $menu->description }}</p>
+            <div class="price_box">
+                <span class="new_price">Rs.{{ $menu->price }}</span>
+                <span class="old_price">Rs.{{ $menu->old_price }}</span>
+            </div>
+
+            <!-- Quantity input field -->
+            <form action="{{ route('add_to_cart', $menu->id) }}" method="POST">
+                @csrf
+                <input type="number" name="qtys" id="qtys" value="1" min="1">
+
+                <ul>
+                    <li><button type="submit" class="btn_1">Add to cart</button></li>
+                </ul>
+            </form>
+        </div>
+    </div>
+@endforeach
+
                     @if(session('sucess'))
                         <div>
                             {{session('sucess')}}

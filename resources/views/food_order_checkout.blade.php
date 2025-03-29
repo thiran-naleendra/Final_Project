@@ -72,28 +72,67 @@
                         <div class="main">
                             <div class="form-group">
                                 <label>First and Last Name</label>
-                                <input class="form-control" placeholder="First and Last Name" value="{{ Auth::user()->name }}">
+                                @if (Auth::check() && Auth::user()->name)
+                                    <!-- If the user is logged in and has a name -->
+                                    <input class="form-control" placeholder="First and Last Name"
+                                        value="{{ Auth::user()->name }}">
+                                @else
+                                    <!-- If the user is not logged in or does not have a name -->
+                                    <div class="alert alert-warning">
+                                        <strong>Warning!</strong> Please log in to proceed.
+                                    </div>
+                                @endif
                             </div>
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Email Address</label>
-                                        <input class="form-control" placeholder="Email Address" value="{{ Auth::user()->email }}">
+                                        @if (Auth::check() && Auth::user()->email)
+                                            <!-- If the user is logged in and has an email -->
+                                            <input class="form-control" placeholder="Email Address"
+                                                value="{{ Auth::user()->email }}">
+                                        @else
+                                            <!-- If the user is not logged in or does not have an email -->
+                                            <div class="alert alert-warning">
+                                                <strong>Warning!</strong> Please log in to proceed.
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Phone</label>
-                                        <input class="form-control" placeholder="Phone" value="{{ Auth::user()->mobile_no }}">
+                                        @if (Auth::check() && Auth::user()->mobile_no)
+                                            <!-- If the user is logged in and has a phone number -->
+                                            <input class="form-control" placeholder="Phone"
+                                                value="{{ Auth::user()->mobile_no }}">
+                                        @else
+                                            <!-- If the user is not logged in or does not have a phone number -->
+                                            <div class="alert alert-warning">
+                                                <strong>Warning!</strong> Please log in to proceed.
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <label>Full Address</label>
-                                <input class="form-control" placeholder="Full Address" value="{{ Auth::user()->address }}">
+                                @if (Auth::check() && Auth::user()->address)
+                                    <!-- If the user is logged in and has an address -->
+                                    <input class="form-control" placeholder="Full Address"
+                                        value="{{ Auth::user()->address }}">
+                                @else
+                                    <!-- If the user is not logged in or does not have an address -->
+                                    <div class="alert alert-warning">
+                                        <strong>Warning!</strong> Please log in to proceed.
+                                    </div>
+                                @endif
                             </div>
-                            
                         </div>
+
                     </div>
                     <!-- /box_booking -->
                     <div class="box_booking_2 style_2">
@@ -115,55 +154,55 @@
 
                             <form action="">
                                 @csrf
-                            <div class="form-group">
-                                <label>Name on card</label>
-                                <input type="text" class="form-control" id="name_card_order" name="name_card_order"
-                                    placeholder="First and last name" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Card number</label>
-                                <input type="text" id="card_number" name="card_number" class="form-control"
-                                    placeholder="Card number" required>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Expiration date</label>
-                                    <div class="row">
-                                        <div class="col-md-6 col-6">
-                                            <div class="form-group">
-                                                <input type="text" id="expire_month" name="expire_month"
-                                                    class="form-control" placeholder="mm" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-6">
-                                            <div class="form-group">
-                                                <input type="text" id="expire_year" name="expire_year"
-                                                    class="form-control" placeholder="yyyy" required>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="form-group">
+                                    <label>Name on card</label>
+                                    <input type="text" class="form-control" id="name_card_order"
+                                        name="name_card_order" placeholder="First and last name" required>
                                 </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <div class="form-group">
-                                        <label>Security code</label>
+                                <div class="form-group">
+                                    <label>Card number</label>
+                                    <input type="text" id="card_number" name="card_number" class="form-control"
+                                        placeholder="Card number" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Expiration date</label>
                                         <div class="row">
-                                            <div class="col-md-4 col-6">
+                                            <div class="col-md-6 col-6">
                                                 <div class="form-group">
-                                                    <input type="text" id="ccv" name="ccv"
-                                                        class="form-control" placeholder="CCV" required>
+                                                    <input type="text" id="expire_month" name="expire_month"
+                                                        class="form-control" placeholder="mm" required>
                                                 </div>
                                             </div>
-                                            <div class="col-md-8 col-6">
-                                                <img src="img/icon_ccv.gif" width="50" height="29"
-                                                    alt="ccv"><small>Last 3 digits</small>
+                                            <div class="col-md-6 col-6">
+                                                <div class="form-group">
+                                                    <input type="text" id="expire_year" name="expire_year"
+                                                        class="form-control" placeholder="yyyy" required>
+                                                </div>
                                             </div>
-                                            
                                         </div>
-                                        <button type="submit" class="btn_1 full-width ">Add Card</button>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Security code</label>
+                                            <div class="row">
+                                                <div class="col-md-4 col-6">
+                                                    <div class="form-group">
+                                                        <input type="text" id="ccv" name="ccv"
+                                                            class="form-control" placeholder="CCV" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8 col-6">
+                                                    <img src="img/icon_ccv.gif" width="50" height="29"
+                                                        alt="ccv"><small>Last 3 digits</small>
+                                                </div>
+
+                                            </div>
+                                            <button type="submit" class="btn_1 full-width ">Add Card</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
 
 
                         </div>
@@ -205,7 +244,7 @@
 
 
                                             <li><a
-                                                    href="#0">{{ $name['name'] }}</a><span>Rs.{{ $name['price'] }}</span>
+                                                    href="#0">{{ $name['name'] }}</a><span>Rs.{{ $name['price'] * $name['quantity'] }}</span>
                                             </li>
                                         @endforeach
 
@@ -217,7 +256,28 @@
                                     </ul>
                                 @endif
 
-                                <button type="submit" class="btn_1 full-width mb_5">Place Oder</button>
+                                <!-- Place Order Button -->
+                                <button type="submit" class="btn_1 full-width mb_5" id="placeOrderButton"
+                                    {{ Auth::check() ? '' : 'disabled' }}>
+                                    Place Order
+                                </button>
+                                <!-- Show warning if the user is not logged in -->
+                                @if (!Auth::check())
+                                    <div class="alert alert-warning">
+                                        <strong>Warning!</strong> Please log in to place an order.
+                                    </div>
+                                @endif
+                                <script>
+                                    // If the user is not logged in, prevent the button from being clicked (in addition to disabling it)
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        const placeOrderButton = document.getElementById('placeOrderButton');
+                                        if (placeOrderButton.disabled) {
+                                            placeOrderButton.addEventListener('click', function(event) {
+                                                event.preventDefault(); // Prevent form submission if disabled
+                                            });
+                                        }
+                                    });
+                                </script>
                                 <div class="text-center"><small>Or Call Us at <strong>0432 48432854</strong></small>
                                 </div>
                         </div>

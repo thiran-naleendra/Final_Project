@@ -17,8 +17,12 @@ class Sales extends Model
     protected $table = 'sales';
     public $timestamps = false;
 
-    public $fillable = ['id','user_id','user_name','item_name','qty','price','status'];
+    public $fillable = ['id','user_id','user_name','item_name','qty','price','status' ,'created_at'];
 
-    
+    public function updateStatus($status)
+    {
+        $this->status = $status;
+        $this->save();
+    }
    
 }

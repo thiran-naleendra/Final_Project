@@ -80,7 +80,7 @@
                                     ?>
                                     <ul class="clearfix">
                                         <li>
-                                            <a href="#0">{{ $name['name'] }}</a><span>Rs.{{ $name['price'] }}</span>
+                                            <a href="#0">{{ $name['name'] }}</a> &ensp; Items :- {{ $name['quantity'] }} <span>Rs{{ $name['price'] * $name['quantity'] }}</span>
                                         </li>
                                     </ul>
                                 @endforeach
@@ -110,101 +110,9 @@
 
 
                             @endif
-                            <div class="row opt_order">
-                                <div class="col-6">
-                                    <label class="container_radio">Delivery</small>
-                                        <input type="radio" value="option1" name="opt_order" checked>
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div class="col-6">
-                                    <label class="container_radio">Take away</small>
-                                        <input type="radio" value="option1" name="opt_order">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="dropdown day">
-                                <a href="#" data-toggle="dropdown">Day <span id="selected_day"></span></a>
-                                <div class="dropdown-menu">
-                                    <div class="dropdown-menu-content">
-                                        <h4>Which day delivered?</h4>
-                                        <div class="radio_select chose_day">
-                                            <ul>
-                                                <li>
-                                                    <input type="radio" id="day_1" name="day" value="Today">
-                                                    <label for="day_1">Today<em>-40%</em></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" id="day_2" name="day"
-                                                        value="Tomorrow">
-                                                    <label for="day_2">Tomorrow<em>-40%</em></label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- /people_select -->
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <!-- /dropdown -->
-                            <div class="dropdown time">
-                                <a href="#" data-toggle="dropdown">Time <span id="selected_time"></span></a>
-                                <div class="dropdown-menu">
-                                    <div class="dropdown-menu-content">
-                                        <h4>Lunch</h4>
-                                        <div class="radio_select add_bottom_15">
-                                            <ul>
-                                                <li>
-                                                    <input type="radio" id="time_1" name="time" value="12.00am">
-                                                    <label for="time_1">12.00<em>-40%</em></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" id="time_2" name="time"
-                                                        value="08.30pm">
-                                                    <label for="time_2">12.30<em>-40%</em></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" id="time_3" name="time"
-                                                        value="09.00pm">
-                                                    <label for="time_3">1.00<em>-40%</em></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" id="time_4" name="time"
-                                                        value="09.30pm">
-                                                    <label for="time_4">1.30<em>-40%</em></label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- /time_select -->
-                                        <h4>Dinner</h4>
-                                        <div class="radio_select">
-                                            <ul>
-                                                <li>
-                                                    <input type="radio" id="time_5" name="time"
-                                                        value="08.00pm">
-                                                    <label for="time_1">20.00<em>-40%</em></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" id="time_6" name="time"
-                                                        value="08.30pm">
-                                                    <label for="time_2">20.30<em>-40%</em></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" id="time_7" name="time"
-                                                        value="09.00pm">
-                                                    <label for="time_3">21.00<em>-40%</em></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" id="time_8" name="time"
-                                                        value="09.30pm">
-                                                    <label for="time_4">21.30<em>-40%</em></label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- /time_select -->
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <!-- /dropdown -->
                             <a href="{{route('checkout') }}" class="btn_1 full-width mb_5">Order Now</a>
                             <div class="text-center"><small>No money charged on this steps</small></div>
